@@ -1,0 +1,601 @@
+index	STRING_id
+0	hsa-let-7f-2
+1	hsa-let-7g
+2	hsa-let-7i
+3	hsa-miR-1
+4	hsa-miR-203
+5	hsa-miR-204
+6	hsa-miR-382
+7	hsa-let-7d
+8	hsa-miR-133a
+9	hsa-miR-21
+10	hsa-miR-16-1
+11	hsa-miR-635
+12	hsa-miR-10a
+13	hsa-miR-184
+14	hsa-miR-19a
+15	hsa-miR-24
+16	hsa-miR-302c
+17	hsa-miR-30d
+18	hsa-miR-368
+19	hsa-miR-150
+20	hsa-miR-125a
+21	hsa-miR-146a
+22	hsa-miR-146b
+23	hsa-let-7e
+24	hsa-let-7f
+25	hsa-miR-210
+26	hsa-miR-125b
+27	hsa-miR-135a
+28	hsa-miR-135b
+29	hsa-miR-151
+30	hsa-miR-152
+31	hsa-miR-153
+32	hsa-miR-154
+33	hsa-miR-133b
+34	hsa-miR-134
+35	hsa-miR-136
+36	hsa-miR-9
+37	hsa-miR-31
+38	hsa-miR-369-5p
+39	hsa-miR-370
+40	hsa-miR-371
+41	hsa-miR-372
+42	hsa-miR-373
+43	hsa-miR-182
+44	hsa-miR-183
+45	hsa-miR-206
+46	hsa-miR-208
+47	hsa-miR-20a
+48	hsa-miR-20b
+49	hsa-miR-214
+50	hsa-miR-218
+51	hsa-miR-22
+52	hsa-miR-221
+53	hsa-miR-222
+54	hsa-miR-223
+55	hsa-miR-23a
+56	hsa-miR-26a
+57	hsa-miR-27a
+58	hsa-miR-29a
+59	hsa-miR-29b
+60	hsa-miR-34a
+61	hsa-miR-34b
+62	hsa-miR-34c
+63	hsa-miR-375
+64	hsa-miR-378
+65	hsa-miR-423
+66	hsa-miR-424
+67	hsa-miR-425-5p
+68	hsa-miR-451
+69	hsa-miR-489
+70	hsa-miR-497
+71	hsa-miR-511
+72	hsa-miR-532-5p
+73	hsa-miR-599
+74	hsa-miR-661
+75	hsa-miR-7
+76	hsa-miR-720
+77	hsa-miR-107
+78	hsa-miR-122
+79	hsa-miR-125a-5p
+80	hsa-miR-122a
+81	hsa-miR-126
+82	hsa-miR-128
+83	hsa-miR-130a
+84	hsa-miR-139
+85	hsa-miR-141
+86	hsa-miR-199a
+87	hsa-miR-155
+88	hsa-miR-196a
+89	hsa-miR-208a
+90	hsa-miR-200c
+91	hsa-miR-429
+92	hsa-miR-140
+93	hsa-miR-16
+94	hsa-miR-100
+95	hsa-miR-143
+96	hsa-miR-377
+97	hsa-miR-200a
+98	hsa-miR-200b
+99	hsa-miR-128b
+100	hsa-miR-127
+101	hsa-miR-376a
+102	hsa-miR-17-3p
+103	hsa-miR-130b
+104	hsa-miR-15a
+105	hsa-miR-25
+106	hsa-miR-28
+107	hsa-miR-328
+108	hsa-miR-17
+109	hsa-miR-520a
+110	hsa-miR-614
+111	hsa-miR-186
+112	hsa-miR-18a
+113	hsa-miR-30a-5p
+114	hsa-miR-181b
+115	hsa-miR-345
+116	hsa-miR-30b
+117	hsa-miR-374
+118	hsa-miR-10b
+119	hsa-let-7c
+120	hsa-miR-103
+121	hsa-miR-192
+122	hsa-miR-194
+123	hsa-miR-26a-1
+124	hsa-miR-27b
+125	hsa-miR-30a
+126	hsa-miR-132
+127	hsa-miR-187
+128	hsa-miR-29c
+129	hsa-let-7a
+130	hsa-miR-30c
+131	hsa-miR-33
+132	hsa-miR-95
+133	hsa-miR-26b
+134	hsa-miR-106b
+135	hsa-miR-1275
+136	hsa-miR-142-3p
+137	hsa-miR-145
+138	hsa-miR-422a
+139	hsa-miR-491-5p
+140	hsa-miR-584
+141	hsa-miR-664
+142	hsa-miR-181a
+143	hsa-miR-15
+144	hsa-miR--196a-2
+145	hsa-miR-326
+146	hsa-miR-195
+147	hsa-miR-30a-3p
+148	hsa-miR-422b
+149	hsa-miR-106a
+150	hsa-miR-19b
+151	hsa-miR-224
+152	hsa-miR-96
+153	hsa-miR-17-5p
+154	hsa-miR-93
+155	hsa-miR-124
+156	hsa-miR-99a
+157	hsa-let-7b
+158	hsa-miR-140-3p
+159	hsa-miR-99b
+160	hsa-miR-199b
+161	hsa-miR-29
+162	hsa-miR-34
+163	hsa-miR-106
+164	hsa-miR-193
+165	hsa-miR-500
+166	hsa-miR-31a
+167	miR-BART21
+168	miR-BART22
+169	hsa-miR-16-2
+170	hsa-miR-164
+171	hsa-miR-170
+172	hsa-miR-172a-2
+173	hsa-miR-409-3p
+174	hsa-miR-419
+175	hsa-miR-637
+176	hsa-miR-642
+177	hsa-miR-648
+178	hsa-miR-652
+179	hsa-miR-657
+180	hsa-miR-662
+181	hsa-miR-663
+182	hsa-miR-7-1
+183	hsa-miR-7-2
+184	hsa-miR-7-3
+185	hsa-miR-802
+186	hsa-miR-1-2
+187	hsa-miR-185
+188	hsa-miR-130a-1
+189	hsa-miR-130b-1
+190	hsa-miR-302d
+191	hsa-miR-30e
+192	hsa-miR-30e-5p
+193	hsa-miR-32
+194	hsa-miR-19b-2
+195	hsa-miR-24-1
+196	hsa-miR-24-2
+197	hsa-miR-192-2
+198	hsa-miR-196b
+199	hsa-miR-324-5p
+200	hsa-miR-144
+201	hsa-miR-30c-1
+202	hsa-miR-101
+203	hsa-miR-18
+204	hsa-miR-376b
+205	hsa-miR-192-3
+206	hsa-miR-193a
+207	hsa-miR-193b
+208	hsa-miR-196a-2
+209	hsa-miR-205
+210	hsa-miR-30e-3p
+211	hsa-miR-324-3p
+212	hsa-miR-330
+213	hsa-miR-335
+214	hsa-miR-338
+215	hsa-miR-339
+216	hsa-miR-340
+217	hsa-miR-342-3p
+218	hsa-miR-222 
+219	hsa-miR-23b
+220	hsa-miR-30-3p
+221	hsa-miR-320
+222	hsa-miR-483-3p
+223	hsa-miR-485-3p
+224	hsa-miR-494
+225	hsa-miR-582
+226	hsa-miR-595
+227	hsa-miR-503
+228	hsa-miR-509
+229	hsa-miR-512-5p
+230	hsa-miR-615-3p
+231	hsa-miR-765
+232	hsa-miR-885-3p
+233	hsa-miR-9-1
+234	hsa-miR-92a
+235	hsa-miR-9-3
+236	hsa-miR-149
+237	hsa-miR-151-5p
+238	hsa-miR-15b
+239	hsa-miR-18b
+240	hsa-miR-191
+241	hsa-miR-197
+242	hsa-miR-98
+243	hsa-miR-181a-1
+244	hsa-miR-181a-2
+245	hsa-miR-181b-1
+246	hsa-miR-181b-2
+247	hsa-miR-181c
+248	hsa-miR-137
+249	hsa-miR-138
+250	hsa-miR-202
+251	hsa-miR-26a-2
+252	hsa-miR-320-2
+253	hsa-miR-320a
+254	hsa-miR-323
+255	hsa-miR-325
+256	hsa-miR-125b-1
+257	hsa-miR-125b-2
+258	hsa-miR-1228
+259	hsa-miR-124a
+260	hsa-miR-129
+261	hsa-miR-379
+262	hsa-miR-100-1
+263	hsa-miR-100-2
+264	hsa-miR-101-1
+265	hsa-miR-148b
+266	hsa-miR-207
+267	hsa-miR-210 
+268	hsa-miR-189
+269	hsa-miR-129-2
+270	hsa-miR-147
+271	hsa-miR-148a
+272	hsa-miR-192-1
+273	hsa-miR-299-5p
+274	hsa-miR-346
+275	hsa-miR-449a
+276	hsa-miR-92
+277	hsa-miR-101a
+278	hsa-miR-101b-2
+279	hsa-miR-102
+280	hsa-miR-103-1
+281	hsa-miR-103-2
+282	hsa-miR-104
+283	hsa-miR-105
+284	hsa-miR-431
+285	hsa-miR-432
+286	hsa-miR-452
+287	hsa-miR-123
+288	hsa-miR-126-5p
+289	hsa-miR-9-2
+290	hsa-miR-92-1
+291	hsa-miR-1 
+292	hsa-miR-124a-3
+293	hsa-miR-298
+294	hsa-miR-363
+295	hsa-miR-365
+296	hsa-miR-542-3p
+297	hsa-miR-296
+298	hsa-miR-199b-5p
+299	hsa-miR-328-1
+300	hsa-miR-331
+301	hsa-miR-347
+302	hsa-miR-17-92
+303	hsa-miR-188
+304	hsa-miR-142-5p
+305	hsa-miR-213
+306	hsa-miR-299-3p
+307	hsa-miR-130
+308	hsa-miR-19
+309	hsa-miR-93 
+310	hsa-miR-20
+311	hsa-miR-215
+312	hsa-miR-211
+313	hsa-miR-212
+314	hsa-miR-381
+315	hsa-miR-433
+316	hsa-miR-484
+317	hsa-miR-486
+318	hsa-miR-513
+319	hsa-miR-516-5p
+320	hsa-miR-518b
+321	hsa-miR-518c
+322	hsa-miR-557
+323	hsa-miR-575
+324	hsa-miR-138-2
+325	hsa-miR-139-5p
+326	hsa-miR-337-3p
+327	hsa-miR-338-3p
+328	hsa-miR-339-5p
+329	hsa-miR-302
+330	hsa-miR-302a
+331	hsa-miR-302b
+332	hsa-miR-126 
+333	hsa-miR-16 
+334	hsa-miR-192 
+335	hsa-miR-195 
+336	hsa-miR-199a 
+337	hsa-miR-203 
+338	hsa-miR-21 
+339	hsa-miR-23a 
+340	hsa-miR-23b 
+341	hsa-miR-24 
+342	hsa-miR-26a 
+343	hsa-miR-29a 
+344	hsa-miR-422b 
+345	hsa-miR-629 
+346	hsa-miR-29a-2
+347	hsa-miR-483
+348	hsa-miR-485-5p
+349	hsa-miR-487b
+350	hsa-miR-491
+351	hsa-miR-493-3p
+352	hsa-miR-493-5p
+353	hsa-miR-495
+354	hsa-miR-92-2
+355	hsa-miR-9-3p
+356	hsa-miR-128a
+357	hsa-miR-220
+358	hsa-miR-342
+359	hsa-miR-355
+360	hsa-miR-492
+361	hsa-miR-498
+362	hsa-miR-513-1
+363	hsa-miR-513-2
+364	hsa-miR-516-3p
+365	hsa-miR-510
+366	hsa-miR-425
+367	hsa-miR-337
+368	hsa-miR-341
+369	hsa-miR-16a
+370	hsa-miR-198
+371	hsa-miR-628
+372	hsa-miR-383
+373	hsa-miR-583
+374	hsa-miR-596
+375	hsa-miR-600
+376	hsa-miR-601
+377	hsa-miR-602
+378	hsa-miR-608
+379	hsa-miR-611
+380	hsa-miR-612
+381	hsa-miR-615
+382	hsa-miR-622
+383	hsa-miR-629
+384	hsa-miR-638
+385	hsa-miR-654
+386	hsa-miR-658
+387	hsa-miR-769-3p
+388	hsa-miR-92b
+389	hsa-miR-138-1
+390	hsa-miR-217
+391	hsa-miR-30c-2
+392	hsa-miR-181d
+393	hsa-miR-216
+394	hsa-miR-129-1
+395	hsa-miR-133
+396	hsa-miR-142
+397	hsa-miR-521
+398	hsa-miR-5
+399	hsa-miR-501
+400	hsa-miR-508
+401	hsa-miR-515-3p
+402	hsa-miR-518a-2
+403	hsa-miR-561
+404	hsa-miR-659
+405	hsa-miR-708
+406	hsa-miR-29b-2
+407	hsa-miR-29b-1
+408	hsa-miR-199a-1
+409	hsa-miR-190
+410	hsa-let-7a-1
+411	hsa-let-7a-2
+412	hsa-let-7a-3
+413	hsa-miR-106a-1
+414	hsa-miR-124a-1
+415	hsa-miR-124a-2
+416	hsa-miR-301
+417	hsa-miR-218-2
+418	hsa-miR-219
+419	hsa-miR-219-1
+420	hsa-miR-199a-1-5p
+421	hsa-miR-199a-2
+422	hsa-miR-199a-2-5p
+423	hsa-miR-199a-3p
+424	hsa-miR-519a
+425	hsa-miR-519d
+426	hsa-miR-520c
+427	hsa-miR-524
+428	hsa-miR-525
+429	hsa-miR-539
+430	hsa-miR-542-5p
+431	hsa-miR-550
+432	hsa-miR-551a
+433	hsa-miR-563
+434	hsa-miR-565
+435	hsa-miR-572
+436	hsa-miR-594
+437	hsa-miR-598
+438	hsa-miR-605
+439	hsa-miR-627
+440	hsa-miR-106b-1
+441	hsa-miR-351
+442	hsa-miR-352
+443	hsa-miR-361
+444	hsa-miR-362
+445	hsa-miR-367
+446	hsa-miR-15a-2
+447	hsa-let-7f-1
+448	kidney cancer
+449	hepatocellular carcinoma (HCC)
+450	lung cancer
+451	non-small cell lung cancer (NSCLC)
+452	ovarian cancer (OC)
+453	colorectal cancer
+454	head and neck squamous cell carcinoma (HNSCC)
+455	malignant melanoma
+456	Oral Squamous Cell Carcinoma (OSCC)
+457	prostate cancer
+458	Alzheimer's disease
+459	breast cancer
+460	cardiac hypertrophy
+461	pancreatic ductal adenocarcinoma (PDAC)
+462	uterine leiomyoma (ULM)
+463	acute myeloid leukemia (AML)
+464	Duchenne muscular dystrophy (DMD)
+465	limb-girdle muscular dystrophies types 2A (LGMD2A)
+466	miyoshi myopathy (MM)
+467	Insulinoma
+468	acute promyelocytic leukemia (APL)
+469	cardiomyopathy
+470	diffuse large B-cell lymphoma (DLBCL)
+471	epithelial ovarian cancer (EOC)
+472	pancreatic cancer
+473	psoriasis
+474	autism spectrum disorder (ASD)
+475	acute lymphoblastic leukemia (ALL)
+476	pituitary adenoma
+477	glioblastoma multiforme (GBM)
+478	chronic pancreatitis
+479	neuroblastoma (NB)
+480	serous ovarian cancer
+481	vascular disease
+482	anaplastic thyroid carcinoma (ATC)
+483	Cerebellar neurodegeneration
+484	heart failure
+485	polycythemia vera (PV)
+486	primary biliary cirrhosis (PBC)
+487	nasopharyngeal carcinoma (NPC)
+488	asthma
+489	B-cell chronic lymphocytic leukemia
+490	dermatomyositis (DM)
+491	tongue squamous cell carcinoma
+492	retinitis pigmentosa (RP)
+493	Parkinson's disease
+494	testicular germ cell tumor
+495	nemaline myopathy (NM)
+496	papillary thyroid carcinoma (PTC)
+497	polymyositis (PM)
+498	follicular lymphoma (FL)
+499	Hodgkin's lymphoma
+500	facioscapulohumeral muscular dystrophy (FSHD)
+501	cholangiocarcinoma
+502	rhabdomyosarcoma
+503	myocardial injury
+504	myocardial infarction
+505	cervical cancer
+506	cholesteatoma
+507	chronic lymphocytic leukemia (CLL)
+508	multiple sclerosis
+509	schizophrenia
+510	type 2 diabetes
+511	gastric cancer (stomach cancer)
+512	neuroblastoma
+513	Intrahepatic cholangiocarcinoma (ICC)
+514	bladder cancer
+515	osteosarcoma
+516	glioblastoma
+517	glioma
+518	medulloblastoma
+519	Oral Carcinoma
+520	non-alcoholic fatty liver disease (NAFLD)
+521	esophageal cancer
+522	head and neck cancer
+523	laryngeal carcinoma
+524	essential thrombocythemia (ET)
+525	primary myelofibrosis
+526	Polycystic Kidney Disease
+527	sepsis
+528	acute myelogeneous leukemia (AML)
+529	multiple myeloma (MM)
+530	mantle cell lymphoma (MCL)
+531	MYC-rearranged lymphoma
+532	malignant lymphoma
+533	uveal melanoma
+534	Down syndrome (DS)
+535	metabolic disease
+536	recurrent ovarian cancer
+537	HCV infection
+538	Huntington's disease (HD)
+539	cancer
+540	PFV-1 infection
+541	Cowden Syndrome
+542	T-cell leukemia
+543	Becker muscular dystrophy (BMD)
+544	lupus nephritis
+545	neurodegeneration
+546	Acute Promyelocytic Leukemia (APL)
+547	thalassemia
+548	Hepatocellular carcinoma (HCC)
+549	endometriosis
+550	medulloblastoma 
+551	renal clear cell carcinoma
+552	pulmonary hypertension
+553	adrenocortical carcinoma
+554	squamous carcinoma
+555	Malignant mesothelioma (MM)
+556	myeloproliferative disorder
+557	coronary artery disease
+558	meningioma
+559	prostate cance
+560	prion disease
+561	retinoblastoma
+562	anxiety disorder
+563	chronic myeloid leukemia (CML)
+564	skin disease
+565	homozygous sickle cell disease (HbSS)
+566	congenital heart disease
+567	Burkitt lymphoma
+568	endometrial cancer
+569	Inclusion body myositis (IBM)
+570	hearing loss
+571	melanoma
+572	Waldenstrom Macroglobulinemia (WM)
+573	diabetic nephropathy
+574	thyroid cancer
+575	lymphoproliferative disease
+576	Obesity
+577	Spinocerebellar ataxia 1
+578	alcoholic liver disease (ALD)
+579	Polycystic liver disease
+580	teratocarcinoma
+581	ulcerative colitis (UC)
+582	vesicular stomatitis
+583	Glomerulosclerosis
+584	B-cell lymphoma
+585	glomerular disease
+586	follicular thyroid carcinoma (FTC)
+587	hypertension
+588	adenoma
+589	hamartoma
+590	lipoma
+591	myoma
+592	sarcoma
+593	neutrophilia
+594	diarrhea predominant irritable bowel syndrome (IBS-D)
+595	HBV-related cirrhosis
+596	frontotemporal dementia
+597	rhabdomyosarcoma (RMS)
+598	Head and neck cancer
+599	tourette's syndrome
