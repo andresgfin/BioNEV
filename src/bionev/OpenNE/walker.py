@@ -1,296 +1,209 @@
 # -*- coding: utf-8 -*-
 
+import random
 
 import numpy as np
-import tensorflow as tf
-
-# Deshabilitar la ejecución ansiosa
-tf.compat.v1.disable_eager_execution()
-
-#funcion adaptada a tensorflow2x
-def fc_op(input_op, name, n_out, layer_collector, act_func=tf.nn.leaky_relu):
-    n_in = input_op.shape[-1]
-
-    with tf.name_scope(name) as scope:
-        kernel = tf.Variable(tf.keras.initializers.GlorotUniform()([n_in, n_out]), dtype=tf.float32, name=scope + "w")
-        biases = tf.Variable(tf.zeros([n_out], dtype=tf.float32), name=scope + 'b')
-
-        fc = tf.add(tf.matmul(input_op, kernel), biases)
-        activation = act_func(fc, name=scope + 'act')
-        layer_collector.append([kernel, biases])
-        return activation
-
-class SDNE(object):
-    def __init__(self, graph, encoder_layer_list, alpha=1e-6, beta=5., nu1=1e-5, nu2=1e-4,
-                 batch_size=200, epoch=100, learning_rate=None):
-        self.g = graph
-
-        self.node_size = self.g.G.number_of_nodes()
-        self.dim = encoder_layer_list[-1]
-
-        self.encoder_layer_list = [self.node_size]
-        self.encoder_layer_list.extend(encoder_layer_list)
-        self.encoder_layer_num = len(encoder_layer_list) + 1
-
-        self.alpha = alpha
-        self.beta = beta
-        self.nu1 = nu1
-        self.nu2 = nu2
-        self.bs = batch_size
-        self.epoch = epoch
-        self.max_iter = (epoch * self.node_size) // batch_size
-
-        self.lr = learning_rate
-        if self.lr is None:
-            self.lr = tf.keras.optimizers.schedules.InverseTimeDecay(0.03, decay_steps=1, decay_rate=0.9999)
-        
-        self.sess = tf.compat.v1.Session()
-        self.vectors = {}
-
-        self.adj_mat = self.getAdj()
-        self.embeddings = self.train()
-
-        look_back = self.g.look_back_list
-
-        for i, embedding in enumerate(self.embeddings):
-            self.vectors[look_back[i]] = embedding
-
-    def getAdj(self):
-        node_size = self.g.node_size
-        look_up = self.g.look_up_dict
-        adj = np.zeros((node_size, node_size))
-        for edge in self.g.G.edges():
-            adj[look_up[edge[0]]][look_up[edge[1]]] = self.g.G[edge[0]][edge[1]]['weight']
-        return adj
-
-    def train(self):
-        adj_mat = self.adj_mat
-
-        AdjBatch = tf.compat.v1.placeholder(tf.float32, [None, self.node_size], name='adj_batch')
-        Adj = tf.compat.v1.placeholder(tf.float32, [None, None], name='adj_mat')
-        B = tf.compat.v1.placeholder(tf.float32, [None, self.node_size], name='b_mat')
-
-        fc = AdjBatch
-        scope_name = 'encoder'
-        layer_collector = []
-
-        with tf.name_scope(scope_name):
-            for i in range(1, self.encoder_layer_num):
-                fc = fc_op(fc,
-                           name=scope_name + str(i),
-                           n_out=self.encoder_layer_list[i],
-                           layer_collector=layer_collector)
-
-        _embeddings = fc
-
-        scope_name = 'decoder'
-        with tf.name_scope(scope_name):
-            for i in range(self.encoder_layer_num - 2, 0, -1):
-                fc = fc_op(fc,
-                           name=scope_name + str(i),
-                           n_out=self.encoder_layer_list[i],
-                           layer_collector=layer_collector)
-            fc = fc_op(fc,
-                       name=scope_name + str(0),
-                       n_out=self.encoder_layer_list[0],
-                       layer_collector=layer_collector, )
-
-        _embeddings_norm = tf.reduce_sum(tf.square(_embeddings), 1, keepdims=True)
-
-        L_1st = tf.reduce_sum(
-            Adj * (
-                    _embeddings_norm - 2 * tf.matmul(
-                _embeddings, tf.transpose(_embeddings)
-            ) + tf.transpose(_embeddings_norm)
-            )
-        )
-
-        L_2nd = tf.reduce_sum(tf.square((AdjBatch - fc) * B))
-
-        L = L_2nd + self.alpha * L_1st
-
-        for param in layer_collector:
-            L += self.nu1 * tf.reduce_sum(tf.abs(param[0])) + self.nu2 * tf.reduce_sum(tf.square(param[0]))
-
-        optimizer = tf.compat.v1.train.AdamOptimizer(self.lr)
-
-        train_op = optimizer.minimize(L)
-
-        init = tf.compat.v1.global_variables_initializer()
-        self.sess.run(init)
-
-        print("total iter: %i" % self.max_iter)
-        for step in range(self.max_iter):
-            index = np.random.randint(self.node_size, size=self.bs)
-            adj_batch_train = adj_mat[index, :]
-            adj_mat_train = adj_batch_train[:, index]
-            b_mat_train = np.ones_like(adj_batch_train)
-            b_mat_train[adj_batch_train != 0] = self.beta
-
-            self.sess.run(train_op, feed_dict={AdjBatch: adj_batch_train,
-                                               Adj: adj_mat_train,
-                                               B: b_mat_train})
-            if step % 50 == 0:
-                l, l1, l2 = self.sess.run((L, L_1st, L_2nd),
-                                          feed_dict={AdjBatch: adj_batch_train,
-                                                     Adj: adj_mat_train,
-                                                     B: b_mat_train})
-                print("step %i: total loss: %s, l1 loss: %s, l2 loss: %s" % (step, l, l1, l2))
-
-        return self.sess.run(_embeddings, feed_dict={AdjBatch: adj_mat})
-
-    def save_embeddings(self, filename):
-        fout = open(filename, 'w')
-        node_num = len(self.vectors)
-        fout.write("{} {}\n".format(node_num, self.dim))
-        for node, vec in self.vectors.items():
-            fout.write("{} {}\n".format(node, ' '.join([str(x) for x in vec])))
-        fout.close()
 
 
-class SDNE2(object):
-    def __init__(self, graph, encoder_layer_list, alpha=1e-6, beta=5., nu1=1e-5, nu2=1e-5,
-                 batch_size=100, max_iter=2000, learning_rate=None):
+def deepwalk_walk_wrapper(class_instance, walk_length, start_node):
+    class_instance.deepwalk_walk(walk_length, start_node)
 
-        self.g = graph
 
-        self.node_size = self.g.G.number_of_nodes()
-        self.rep_size = encoder_layer_list[-1]
+class BasicWalker:
+    def __init__(self, G, workers):
+        self.G = G.G
+        self.node_size = G.node_size
+        self.look_up_dict = G.look_up_dict
 
-        self.encoder_layer_list = [self.node_size] + encoder_layer_list
-        self.encoder_layer_num = len(encoder_layer_list) + 1
+    def deepwalk_walk(self, walk_length, start_node):
+        '''
+        Simulate a random walk starting from start node.
+        '''
+        G = self.G
+        look_up_dict = self.look_up_dict
+        node_size = self.node_size
 
-        self.alpha = alpha
-        self.beta = beta
-        self.nu1 = nu1
-        self.nu2 = nu2
-        self.bs = batch_size
-        self.max_iter = max_iter
-        self.lr = learning_rate
-        if self.lr is None:
-            self.lr = tf.keras.optimizers.schedules.InverseTimeDecay(0.1, decay_steps=1, decay_rate=0.9999)
+        walk = [start_node]
 
-        self.sess = tf.compat.v1.Session()
-        self.vectors = {}
-
-        self.adj_mat = self.getAdj()
-        self.deg_vec = np.sum(self.adj_mat, axis=1)
-        self.embeddings = self.get_train()
-
-        look_back = self.g.look_back_list
-
-        for i, embedding in enumerate(self.embeddings):
-            self.vectors[look_back[i]] = embedding
-
-    def getAdj(self):
-        node_size = self.g.node_size
-        look_up = self.g.look_up_dict
-        adj = np.zeros((node_size, node_size))
-        for edge in self.g.G.edges():
-            adj[look_up[edge[0]]][look_up[edge[1]]] = self.g.G[edge[0]][edge[1]]['weight']
-        return adj
-
-    def model(self, node, layer_collector, scope_name):
-        fc = node
-        with tf.name_scope(scope_name + 'encoder'):
-            for i in range(1, self.encoder_layer_num):
-                fc = fc_op(fc,
-                           name=scope_name + str(i),
-                           n_out=self.encoder_layer_list[i],
-                           layer_collector=layer_collector)
-
-        _embeddings = fc
-
-        with tf.name_scope(scope_name + 'decoder'):
-            for i in range(self.encoder_layer_num - 2, -1, -1):
-                fc = fc_op(fc,
-                           name=scope_name + str(i),
-                           n_out=self.encoder_layer_list[i],
-                           layer_collector=layer_collector)
-
-        return _embeddings, fc
-
-    def generate_batch(self, shuffle=True):
-        adj = self.adj_mat
-
-        row_indices, col_indices = adj.nonzero()
-        sample_index = np.arange(row_indices.shape[0])
-        num_of_batches = row_indices.shape[0] // self.bs
-        counter = 0
-        if shuffle:
-            np.random.shuffle(sample_index)
-
-        while True:
-            batch_index = sample_index[self.bs * counter:self.bs * (counter + 1)]
-
-            nodes_a = adj[row_indices[batch_index], :]
-            nodes_b = adj[col_indices[batch_index], :]
-            weights = adj[row_indices[batch_index], col_indices[batch_index]]
-            weights = np.reshape(weights, [-1, 1])
-
-            beta_mask_a = np.ones_like(nodes_a)
-            beta_mask_a[nodes_a != 0] = self.beta
-            beta_mask_b = np.ones_like(nodes_b)
-            beta_mask_b[nodes_b != 0] = self.beta
-
-            if counter == num_of_batches:
-                counter = 0
-                np.random.shuffle(sample_index)
+        while len(walk) < walk_length:
+            cur = walk[-1]
+            cur_nbrs = list(G.neighbors(cur))
+            if len(cur_nbrs) > 0:
+                walk.append(random.choice(cur_nbrs))
             else:
-                counter += 1
+                break
+        return walk
 
-            yield (nodes_a, nodes_b, beta_mask_a, beta_mask_b, weights)
+    def simulate_walks(self, num_walks, walk_length):
+        '''
+        Repeatedly simulate random walks from each node.
+        '''
+        G = self.G
+        walks = []
+        nodes = list(G.nodes())
+        print('Begin random walks...')
+        for walk_iter in range(num_walks):
+            # pool = multiprocessing.Pool(processes = 4)
+            # print(str(walk_iter+1), '/', str(num_walks))
+            random.shuffle(nodes)
+            for node in nodes:
+                # walks.append(pool.apply_async(deepwalk_walk_wrapper, (self, walk_length, node, )))
+                walks.append(self.deepwalk_walk(
+                    walk_length=walk_length, start_node=node))
+            # pool.close()
+            # pool.join()
+        # print(len(walks))
+        print('Walk finished...')
+        return walks
 
-    def get_train(self):
 
-        NodeA = tf.compat.v1.placeholder(tf.float32, [None, self.node_size], name='node_a')
-        BmaskA = tf.compat.v1.placeholder(tf.float32, [None, self.node_size], name='beta_mask_a')
-        NodeB = tf.compat.v1.placeholder(tf.float32, [None, self.node_size], name='node_b')
-        BmaskB = tf.compat.v1.placeholder(tf.float32, [None, self.node_size], name='beta_mask_b')
-        Weights = tf.compat.v1.placeholder(tf.float32, [None, 1], name='adj_weights')
+class Walker:
+    def __init__(self, G, p, q, workers):
+        self.G = G.G
+        self.p = p
+        self.q = q
+        self.node_size = G.node_size
+        self.look_up_dict = G.look_up_dict
 
-        layer_collector = []
-        nodes = tf.concat([NodeA, NodeB], axis=0)
-        bmasks = tf.concat([BmaskA, BmaskB], axis=0)
-        emb, recons = self.model(nodes, layer_collector, 'reconstructor')
-        embs = tf.split(emb, num_or_size_splits=2, axis=0)
+    def node2vec_walk(self, walk_length, start_node):
+        '''
+        Simulate a random walk starting from start node.
+        '''
+        G = self.G
+        alias_nodes = self.alias_nodes
+        alias_edges = self.alias_edges
+        look_up_dict = self.look_up_dict
+        node_size = self.node_size
 
-        L_1st = tf.reduce_sum(Weights * (tf.reduce_sum(tf.square(embs[0] - embs[1]), axis=1)))
+        walk = [start_node]
 
-        L_2nd = tf.reduce_sum(tf.square((nodes - recons) * bmasks))
+        while len(walk) < walk_length:
+            cur = walk[-1]
+            cur_nbrs = list(G.neighbors(cur))
+            if len(cur_nbrs) > 0:
+                if len(walk) == 1:
+                    walk.append(
+                        cur_nbrs[alias_draw(alias_nodes[cur][0], alias_nodes[cur][1])])
+                else:
+                    prev = walk[-2]
+                    pos = (prev, cur)
+                    next = cur_nbrs[alias_draw(alias_edges[pos][0],
+                                               alias_edges[pos][1])]
+                    walk.append(next)
+            else:
+                break
 
-        L = L_2nd + self.alpha * L_1st
+        return walk
 
-        for param in layer_collector:
-            L += self.nu1 * tf.reduce_sum(tf.abs(param[0])) + self.nu2 * tf.reduce_sum(tf.square(param[0]))
+    def simulate_walks(self, num_walks, walk_length):
+        '''
+        Repeatedly simulate random walks from each node.
+        '''
+        G = self.G
+        walks = []
+        nodes = list(G.nodes())
+        print('Begin random walk...')
+        for walk_iter in range(num_walks):
+            # print(str(walk_iter+1), '/', str(num_walks))
+            random.shuffle(nodes)
+            for node in nodes:
+                walks.append(self.node2vec_walk(
+                    walk_length=walk_length, start_node=node))
+        print('Walk finished...')
+        return walks
 
-        optimizer = tf.compat.v1.train.AdamOptimizer(self.lr)
-        train_op = optimizer.minimize(L)
+    def get_alias_edge(self, src, dst):
+        '''
+        Get the alias edge setup lists for a given edge.
+        '''
+        G = self.G
+        p = self.p
+        q = self.q
 
-        init = tf.compat.v1.global_variables_initializer()
-        self.sess.run(init)
+        unnormalized_probs = []
+        for dst_nbr in G.neighbors(dst):
+            if dst_nbr == src:
+                unnormalized_probs.append(G[dst][dst_nbr]['weight'] / p)
+            elif G.has_edge(dst_nbr, src):
+                unnormalized_probs.append(G[dst][dst_nbr]['weight'])
+            else:
+                unnormalized_probs.append(G[dst][dst_nbr]['weight'] / q)
+        norm_const = sum(unnormalized_probs)
+        normalized_probs = [
+            float(u_prob) / norm_const for u_prob in unnormalized_probs]
 
-        generator = self.generate_batch()
+        return alias_setup(normalized_probs)
 
-        for step in range(self.max_iter + 1):
-            nodes_a, nodes_b, beta_mask_a, beta_mask_b, weights = generator.__next__()
+    def preprocess_transition_probs(self):
+        '''
+        Preprocessing of transition probabilities for guiding the random walks.
+        '''
+        G = self.G
 
-            feed_dict = {NodeA: nodes_a,
-                         NodeB: nodes_b,
-                         BmaskA: beta_mask_a,
-                         BmaskB: beta_mask_b,
-                         Weights: weights}
+        alias_nodes = {}
+        for node in G.nodes():
+            unnormalized_probs = [G[node][nbr]['weight']
+                                  for nbr in G.neighbors(node)]
+            norm_const = sum(unnormalized_probs)
+            normalized_probs = [
+                float(u_prob) / norm_const for u_prob in unnormalized_probs]
+            alias_nodes[node] = alias_setup(normalized_probs)
 
-            self.sess.run(train_op, feed_dict=feed_dict)
-            if step % 50 == 0:
-                print("step %i: %s" % (step, self.sess.run([L, L_1st, L_2nd], feed_dict=feed_dict)))
+        alias_edges = {}
+        triads = {}
 
-        return self.sess.run(emb, feed_dict={NodeA: self.adj_mat[0:1, :], NodeB: self.adj_mat[1:, :]})
+        look_up_dict = self.look_up_dict
+        node_size = self.node_size
+        for edge in G.edges():
+            alias_edges[edge] = self.get_alias_edge(edge[0], edge[1])
 
-    def save_embeddings(self, filename):
-        fout = open(filename, 'w')
-        node_num = len(self.vectors)
-        fout.write("{} {}\n".format(node_num, self.rep_size))
-        for node, vec in self.vectors.items():
-            fout.write("{} {}\n".format(node, ' '.join([str(x) for x in vec])))
-        fout.close()
+        self.alias_nodes = alias_nodes
+        self.alias_edges = alias_edges
+
+        return
+
+
+def alias_setup(probs):
+    '''
+    Compute utility lists for non-uniform sampling from discrete distributions.
+    Refer to https://hips.seas.harvard.edu/blog/2013/03/03/the-alias-method-efficient-sampling-with-many-discrete-outcomes/
+    for details
+    '''
+    K = len(probs)
+    q = np.zeros(K, dtype=np.float32)
+    J = np.zeros(K, dtype=np.int32)
+
+    smaller = []
+    larger = []
+    for kk, prob in enumerate(probs):
+        q[kk] = K * prob
+        if q[kk] < 1.0:
+            smaller.append(kk)
+        else:
+            larger.append(kk)
+
+    while len(smaller) > 0 and len(larger) > 0:
+        small = smaller.pop()
+        large = larger.pop()
+
+        J[small] = large
+        q[large] = q[large] + q[small] - 1.0
+        if q[large] < 1.0:
+            smaller.append(large)
+        else:
+            larger.append(large)
+
+    return J, q
+
+
+def alias_draw(J, q):
+    '''
+    Draw sample from a non-uniform discrete distribution using alias sampling.
+    '''
+    K = len(J)
+
+    kk = int(np.floor(np.random.rand() * K))
+    if np.random.rand() < q[kk]:
+        return kk
+    else:
+        return J[kk]
