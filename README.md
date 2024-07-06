@@ -1,13 +1,5 @@
 # BioNEV (Biomedical Network Embedding Evaluation)
 
-## 1. Introduction
-This repository contains source code and datasets for paper ["Graph Embedding on Biomedical Networks: Methods, Applications, and Evaluations"](https://arxiv.org/pdf/1906.05017.pdf) (accepted by **Bioinformatics**).
-
-We compile 10 datasets for prediction task and use them to evaluate 10 representative graph embedding methods:
-- matrix factorization-based: Laplacian Eigenmap, SVD, Graph Factorization, HOPE, GraRep
-- random walk-based: DeepWalk, node2vec, struc2vec
-- neural network-based: LINE, SDNE
-
 
 Please kindly cite the paper if you use the code, datasets or any results in this repo or in the paper:
 ```
@@ -21,21 +13,7 @@ Please kindly cite the paper if you use the code, datasets or any results in thi
   year={2020},
   publisher={Oxford University Press}
 }
-```
-
-
-## 3. Dataset
-Datasets used
-### Link Prediction
-
-
-
-
-## 4. Code
-
-#### Installation
-
-Use the following command to install directly from GitHub;
+``
 
 
 
