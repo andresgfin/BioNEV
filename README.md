@@ -35,6 +35,8 @@ los metodos de embeddings evaluados son:
 los datasets obtenidos en formato txt tabulados fueron formateados a formato edgelist y nodelist con el siguiente codigo de python, ejecutado en kaggle:
 
 
+```
+
 import pandas as pd
 import os
 
@@ -75,6 +77,11 @@ df = df.sort_values(by=['miRNA', 'Validated target'])
 df[['miRNA', 'Validated target']].to_csv(edgelist_file, sep=" ", index=False, header=False)
 
 print(f"Archivos '{edgelist_file}' y '{nodelist_file}' creados con éxito.")
+
+```
+
+
+
 
 
 
