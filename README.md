@@ -2,14 +2,8 @@
 # BioNEV (Biomedical Network Embedding Evaluation)
 
 ## 1. Introduction
-This repository contains source code and datasets for paper ["Graph Embedding on Biomedical Networks: Methods, Applications, and Evaluations"](https://arxiv.org/pdf/1906.05017.pdf) (accepted by **Bioinformatics**). This work aims to systematically evaluate recent advanced graph embedding techniques on biomedical tasks. We compile 5 benchmark datasets for 4 biomedical prediction tasks (see paper for details) and use them to evaluate 11 representative graph embedding methods selected from different categories:
-- 5 matrix factorization-based: Laplacian Eigenmap, SVD, Graph Factorization, HOPE, GraRep
-- 3 random walk-based: DeepWalk, node2vec, struc2vec
-- 3 neural network-based: LINE, SDNE, GAE
+This repository contains source code adapted from:
 
-The code can also be applied to graphs in other domains (e.g., social networks, citation networks). More experimental details can be found in [**Supplementary Materials**](Supplementary%20Materials.pdf).
-
-Please kindly cite the paper if you use the code, datasets or any results in this repo or in the paper:
 ```
 @article{yue2020graph,
   title={Graph embedding on biomedical networks: methods, applications and evaluations},
@@ -23,17 +17,20 @@ Please kindly cite the paper if you use the code, datasets or any results in thi
 }
 ```
 
-## 2. Dataset
+We compile 9 datasets for link prediction task and use them to evaluate 10 representative graph embedding methods selected from different categories:
+- matrix factorization-based: Laplacian Eigenmap, SVD, Graph Factorization, HOPE, GraRep
+- random walk-based: DeepWalk, node2vec, struc2vec
+- neural network-based: LINE, SDNE
+
+
+## 2. Datasets
 Datasets used in the paper:
 ### Link Prediction
 - [CTD DDA](data/CTD_DDA) : a drug-disease association graph extracted from [Comparative Toxicogenomics Database](http://ctdbase.org/downloads/) 
 - [NDFRT DDA](data/NDFRT_DDA) : a drug-disease association graph extracted from [UMLS National Drug File](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/NDFRT/)
 - [DrugBank DDi](data/DrugBank_DDI) : a drug-drug interaction graph extracted from [DrugBank database](https://www.drugbank.ca/)
 - [STRING PPI](data/STRING_PPI) : a protein-protein interaction graph extracted from [STRING database](https://string-db.org/)
-### Node Classification
-- [Clin Term COOC](data/Clin_Term_COOC) : a medical term-term co-occurrence graph from (Finlayson et al., 2014) [[source data]](https://datadryad.org//resource/doi:10.5061/dryad.jp917), [[paper]](https://doi.org/10.1038/sdata.2014.32) 
-- [node2vec PPI](data/node2vec_PPI): a PPI graph with functional annotations used in [node2vec](https://snap.stanford.edu/node2vec/) (Grover and Leskovec, 2016)
-- [Mashup PPI](data/Mashup_PPI): a experimental PPI graph with functional annotations used in [Mashup](http://cb.csail.mit.edu/cb/mashup/) (Cho et al., 2016)
+
 
 Statistics:
 
