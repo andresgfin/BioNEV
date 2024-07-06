@@ -2,7 +2,7 @@
 # BioNEV (Biomedical Network Embedding Evaluation)
 
 ## 1. Introduction
-This repository contains source code adapted from:
+Este repositorio contiene codigo python adaptado de:
 
 ```
 @article{yue2020graph,
