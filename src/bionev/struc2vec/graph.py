@@ -3,7 +3,8 @@
 """Graph utilities."""
 
 import logging
-from collections import Iterable, defaultdict
+from collections.abc import Iterable
+from collections import defaultdict
 from concurrent.futures import ProcessPoolExecutor
 from io import open
 from itertools import permutations
