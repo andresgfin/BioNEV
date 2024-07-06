@@ -46,15 +46,15 @@ input_file_path = '/kaggle/input/dataset_TP/dataset_name.txt'
 output_dir = '/kaggle/working/'
 
 # Archivos de salida
-edgelist_file = os.path.join(output_dir, 'mirna.edgelist')
-nodelist_file = os.path.join(output_dir, 'nodelist.txt')
+edgelist_file = os.path.join(output_dir, 'dataset_name.edgelist')
+nodelist_file = os.path.join(output_dir, 'dataset_namenodelist.txt')
 
 # Leer el dataset completo
 df = pd.read_csv(input_file_path, sep=" ")
 #Nota:para datasets txt tabulados con espacios no tabulados (dataset de miRNAs), se utilizo: df = pd.read_csv(input_file_path, sep="\t")
 
 # Obtener lista única de nodos (genes) y crear un DataFrame con índice
-nodes = pd.concat([df['miRNA'], df['Validated target']]).unique()
+nodes = pd.concat([df['protein1'], df['protein2']]).unique()
 node_df = pd.DataFrame(nodes, columns=['STRING_id'])
 node_df.reset_index(inplace=True)
 node_df.rename(columns={'index': 'index'}, inplace=True)
@@ -66,31 +66,26 @@ node_to_index = dict(zip(node_df['STRING_id'], node_df['index']))
 node_df.to_csv(nodelist_file, sep="\t", index=False)
 
 # Reemplazar STRING_id con índice en el DataFrame original
-df['miRNA'] = df['miRNA'].map(node_to_index)
-df['Validated target'] = df['Validated target'].map(node_to_index)
+df['protein1'] = df['protein1'].map(node_to_index)
+df['protein2'] = df['protein2'].map(node_to_index)
 
 # Ordenar las interacciones 
-df = df.sort_values(by=['miRNA', 'Validated target'])
+df = df.sort_values(by=['protein1', 'protein2'])
 
 # Crear el archivo edgelist.edgelist en formato estándar
-df[['miRNA', 'Validated target']].to_csv(edgelist_file, sep=" ", index=False, header=False)
+df[['protein1', 'protein2']].to_csv(edgelist_file, sep=" ", index=False, header=False)
 
 print(f"Archivos '{edgelist_file}' y '{nodelist_file}' creados con éxito.")
 
 ```
+En el codigo anterior, protein1 y protein2 son las columnas del dataset a considerar, en este caso las columnas de los datasets de interaccion de proteinas. Para otros datasets, sereemplaza por el nombre correspondiente.
+
+luego, los archivos edgelist y nodelist obtenidos fueron incorporados a la carpeta de data del repositorio.
 
 
 
+## 3. instrucciones de instalacion del codigo Bionev en kaggle y ejecucion de metodos de embeddings y Link prediction:
 
-
-
-
-
-## 3. Code
-The graph embedding learning for Laplician Eigenmap, Graph Factorization, HOPE, GraRep, DeepWalk, node2vec, LINE, SDNE uses the code from [OpenNE](https://github.com/thunlp/OpenNE)
-The code of [struc2vec](https://github.com/leoribeiro/struc2vec) and [GAE](https://github.com/tkipf/gae) is from their authors. 
-To ensure different source code could run successfully in our framework, we modify part of their source code.
- 
 #### Installation
 
 Use the following command to install directly from GitHub;
