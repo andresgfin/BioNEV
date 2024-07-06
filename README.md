@@ -103,6 +103,12 @@ ejecutandolo a continuacion de la instalacion previa, en una celda de kaggle:
 !python /kaggle/working/BioNEV/src/bionev/main.py --input /kaggle/working/BioNEV/data/folder_name/dataset_name.edgelist --method method_name --task link-prediction --output /kaggle/working/method_name_embeddings.txt
 
 ```
+###descripcion del comando: 
+--input:  ruta al dataset, solo acepta grafos en formato edgelist
+--method: metodo de embedding. Opciones disponibles: node2vec, struc2vec, DeepWalk, LINE, SVD, GF, Laplacian, HOPE, GraRep, SDNE
+--task: tarea de prediccion. Opciones disponibles: link-prediction  
+--output: ruta a kaggle working para guardar el archivo de embeddings. 
+
 ### ejemplo de uso, en este caso para ejecutar un dataset de miRNA con el metodo node2vec y link prediction:
 
 ```
