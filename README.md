@@ -32,8 +32,7 @@ los metodos de embeddings evaluados son:
 
 
 ### codigo para procesar los datasets:
-los datasets obtenidos en formato txt tabulados fueron formateados a formato edgelist y nodelist con el siguiente codigo de python, ejecutado en kaggle:
-
+los datasets obtenidos en formato txt tabulados fueron formateados a formato edgelist y nodelist con el siguiente codigo de python, ejecutado en kaggle, como paso previo se creo un dataset de kaggle en la ruta /kaggle/input con los archivos a formatear.Luego, cada dataset se formateo por separado reemplazando "dataset_name" en el codgio por el nombre de archivo correspondiente:
 
 ```
 
@@ -41,7 +40,7 @@ import pandas as pd
 import os
 
 # Ruta al archivo de entrada en Kaggle  (cambiar la ruta por la que corresponda al dataset a ejecutar)
-input_file_path = '/kaggle/input/dataset_TP/tabla_miRNA_gen.txt'
+input_file_path = '/kaggle/input/dataset_TP/dataset_name.txt'
 
 # Ruta de salida en Kaggle/working
 output_dir = '/kaggle/working/'
@@ -51,8 +50,8 @@ edgelist_file = os.path.join(output_dir, 'mirna.edgelist')
 nodelist_file = os.path.join(output_dir, 'nodelist.txt')
 
 # Leer el dataset completo
-#para tabla txt tabulados con espacios usar: df = pd.read_csv(input_file_path, sep="\t")
-df = pd.read_csv(input_file_path, sep="\t")
+df = pd.read_csv(input_file_path, sep=" ")
+#Nota:para datasets txt tabulados con espacios no tabulados (dataset de miRNAs), se utilizo: df = pd.read_csv(input_file_path, sep="\t")
 
 # Obtener lista única de nodos (genes) y crear un DataFrame con índice
 nodes = pd.concat([df['miRNA'], df['Validated target']]).unique()
