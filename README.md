@@ -17,7 +17,8 @@ Este repositorio contiene codigo python adaptado de:
 }
 ```
 
-We compile 9 datasets for link prediction task and use them to evaluate 10 representative graph embedding methods selected from different categories:
+We compile 9 datasets for link prediction task and use them to evaluate 10 representative graph embedding methods 
+
 - matrix factorization-based: Laplacian Eigenmap, SVD, Graph Factorization, HOPE, GraRep
 - random walk-based: DeepWalk, node2vec, struc2vec
 - neural network-based: LINE, SDNE
