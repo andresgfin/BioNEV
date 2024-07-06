@@ -88,10 +88,12 @@ luego, los archivos edgelist y nodelist obtenidos fueron incorporados a la carpe
 
 #### Installation
 
-Use the following command to install directly from GitHub;
+Para instalar directamente desde github:
 
 ```bash
-$ pip install git+https://github.com/xiangyue9607/BioNEV.git
+!git clone https://github.com/andresgfin/BioNEV.git
+!pip install tensorflow
+!pip install -e /kaggle/working/BioNEV
 ```
 
 
