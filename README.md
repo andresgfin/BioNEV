@@ -31,7 +31,7 @@ los metodos de embeddings evaluados son:
 - neural network-based: LINE, SDNE
 
 
-### codigo para procesar los datasets:
+### Procesamiento de los datasets:
 los datasets obtenidos en formato txt tabulados fueron formateados a formato edgelist y nodelist con el siguiente codigo de python, ejecutado en kaggle, como paso previo se creo un dataset de kaggle en la ruta /kaggle/input con los archivos a formatear.Luego, cada dataset se formateo por separado reemplazando "dataset_name" en el codgio por el nombre de archivo correspondiente:
 
 ```
@@ -88,13 +88,29 @@ luego, los archivos edgelist y nodelist obtenidos fueron incorporados a la carpe
 
 #### Installation
 
-Para instalar directamente desde github:
+Para instalar directamente desde github a kaggle:
 
 ```bash
 !git clone https://github.com/andresgfin/BioNEV.git
 !pip install tensorflow
 !pip install -e /kaggle/working/BioNEV
 ```
+
+### Uso: para ejecutar los metodos de embeddings y tarea link prediccion se utilizo el siguiente comando, 
+ejecutandolo a continuacion de la instalacion previa, en una celda de kaggle:
+
+```
+!python /kaggle/working/BioNEV/src/bionev/main.py --input /kaggle/working/BioNEV/data/folder_name/dataset_name.edgelist --method method_name --task link-prediction --output /kaggle/working/method_name_embeddings.txt
+
+```
+### ejemplo de uso, en este caso para ejecutar un dataset de miRNA con el metodo node2vec y link prediction:
+
+```
+!python /kaggle/working/BioNEV/src/bionev/main.py --input /kaggle/working/BioNEV/data/miRNA/mirna_enf.edgelist --method node2vec --task link-prediction --output /kaggle/working/node2vec.txt
+
+```
+Luego se reptitio el proceso para ejecutar cada dataset con cada metodo de embeddings con link prediction
+
 
 
 
@@ -137,23 +153,6 @@ Para instalar directamente desde github:
   - --hidden, number of units in hidden layer. Only applied for GAE. The default is 32.
   - --gae_model_selection, GAE model variants: gcn_ae or gcn_vae. The default is gcn_ae.
 
-#### Running example
 
-```
-bionev --input ./data/DrugBank_DDI/DrugBank_DDI.edgelist \
-       --output ./embeddings/DeepWalk_DrugBank_DDI.txt \
-       --method DeepWalk \
-       --task link-prediction \
-       --eval-result-file eval_result.txt
-```
-
-```
-bionev --input ./data/Clin_Term_COOC/Clin_Term_COOC.edgelist \
-       --label-file ./data/Clin_Term_COOC/Clin_Term_COOC_labels.txt \
-       --output ./embeddings/LINE_COOC.txt \
-       --method LINE \
-       --task node-classification \
-       --weighted True
-```
 
 
