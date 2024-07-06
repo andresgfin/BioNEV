@@ -1,8 +1,7 @@
 
 # BioNEV (Biomedical Network Embedding Evaluation)
 
-## 1. Introduction
-Este repositorio contiene codigo python adaptado de:
+## 1. Este repositorio contiene codigo python adaptado de:
 
 ```
 @article{yue2020graph,
@@ -17,44 +16,66 @@ Este repositorio contiene codigo python adaptado de:
 }
 ```
 
-We compile 9 datasets for link prediction task and use them to evaluate 10 representative graph embedding methods 
+## 2. instrucciones de uso:
+###Datasets y metodos de embeddings:
 
+Este repositorio contiene 9 datasets (8 datasets de interacciones proteina-proteina de disferentes especies, y 2 datasets de miRNAs), en formato edgelist en la carpeta "data". Los datasets de interraccion de proteinas son: 
+C.elegans, Acanthomoeba, E.coli, Oceanococcus, Oceanobacter, Jonesia denitrificans, Spirulina
+los datasets de miRNAs son: miRNA_gen (miRNAs y sus genes target) y miRNA_enf (miRNAs asociados a enfermedades)
+
+Dichos datasets se utilizaron para evaluar 10 metodos de mebeddings representativos, con la tarea link prediction.
+
+los metodos de embeddings evaluados son:
 - matrix factorization-based: Laplacian Eigenmap, SVD, Graph Factorization, HOPE, GraRep
 - random walk-based: DeepWalk, node2vec, struc2vec
 - neural network-based: LINE, SDNE
 
 
-## 2. Datasets
-
-### datasets de interacciones proteina-proteina:
-
-C. elegans
-Acanthomoeba
-E.coli
-Oceanococcus
-Oceanobacter
-Jonesia denitrificans
-Spirulina
-### Dataset de miRNas y sus genes targets
-
-miRNA_gen
-
-###Dataset de miRNAs y sus enfermedades asociadas
-miRNA_enf
+### codigo para procesar los datasets:
+los datasets obtenidos en formato txt tabulados fueron formateados a formato edgelist y nodelist con el siguiente codigo de python, ejecutado en kaggle:
 
 
+import pandas as pd
+import os
 
-Statistics:
+# Ruta al archivo de entrada en Kaggle  (cambiar la ruta por la que corresponda al dataset a ejecutar)
+input_file_path = '/kaggle/input/dataset_TP/tabla_miRNA_gen.txt'
 
-|      Task Type      |     Dataset    | #nodes |   #edges  | Density | #labels |
-|:-------------------:|:--------------:|:------:|:---------:|:-------:|:-------:|
-|                     |     CTD DDA    | 12,765 |   92,813  |  0.11%  |    -    |
-|                     |    NDFRT DDA   | 13,545 |   56,515  |  0.06%  |    -    |
-|   Link Prediction   |  DrugBank DDI  |  2,191 |  242,027  |  10.08% |    -    |
-|                     |   STRING PPI   | 15,131 |  359,776  |  0.31%  |    -    |
-|                     | Clin Term COOC | 48,651 | 1,659,249 |  0.14%  |    31   |
-| Node Classification |   node2vec PPI | 3,890  |   76,584  |  1.01%  |    50   |
-|                     |   Mashup PPI   | 16,143 |  300,181  |  0.23%  |    28   |
+# Ruta de salida en Kaggle/working
+output_dir = '/kaggle/working/'
+
+# Archivos de salida
+edgelist_file = os.path.join(output_dir, 'mirna.edgelist')
+nodelist_file = os.path.join(output_dir, 'nodelist.txt')
+
+# Leer el dataset completo
+#para tabla txt tabulados con espacios usar: df = pd.read_csv(input_file_path, sep="\t")
+df = pd.read_csv(input_file_path, sep="\t")
+
+# Obtener lista única de nodos (genes) y crear un DataFrame con índice
+nodes = pd.concat([df['miRNA'], df['Validated target']]).unique()
+node_df = pd.DataFrame(nodes, columns=['STRING_id'])
+node_df.reset_index(inplace=True)
+node_df.rename(columns={'index': 'index'}, inplace=True)
+
+# Crear un diccionario para mapear STRING_id a índice
+node_to_index = dict(zip(node_df['STRING_id'], node_df['index']))
+
+# Crear el archivo nodelist.txt en el formato esperado
+node_df.to_csv(nodelist_file, sep="\t", index=False)
+
+# Reemplazar STRING_id con índice en el DataFrame original
+df['miRNA'] = df['miRNA'].map(node_to_index)
+df['Validated target'] = df['Validated target'].map(node_to_index)
+
+# Ordenar las interacciones 
+df = df.sort_values(by=['miRNA', 'Validated target'])
+
+# Crear el archivo edgelist.edgelist en formato estándar
+df[['miRNA', 'Validated target']].to_csv(edgelist_file, sep=" ", index=False, header=False)
+
+print(f"Archivos '{edgelist_file}' y '{nodelist_file}' creados con éxito.")
+
 
 
 
