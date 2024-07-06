@@ -24,12 +24,23 @@ We compile 9 datasets for link prediction task and use them to evaluate 10 repre
 
 
 ## 2. Datasets
-Datasets used in the paper:
-### Link Prediction
-- [CTD DDA](data/CTD_DDA) : a drug-disease association graph extracted from [Comparative Toxicogenomics Database](http://ctdbase.org/downloads/) 
-- [NDFRT DDA](data/NDFRT_DDA) : a drug-disease association graph extracted from [UMLS National Drug File](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/NDFRT/)
-- [DrugBank DDi](data/DrugBank_DDI) : a drug-drug interaction graph extracted from [DrugBank database](https://www.drugbank.ca/)
-- [STRING PPI](data/STRING_PPI) : a protein-protein interaction graph extracted from [STRING database](https://string-db.org/)
+
+### datasets de interacciones proteina-proteina:
+
+C. elegans
+Acanthomoeba
+E.coli
+Oceanococcus
+Oceanobacter
+Jonesia denitrificans
+Spirulina
+### Dataset de miRNas y sus genes targets
+
+miRNA_gen
+
+###Dataset de miRNAs y sus enfermedades asociadas
+miRNA_enf
+
 
 
 Statistics:
