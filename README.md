@@ -19,7 +19,7 @@
 ## 2. instrucciones de uso:
 ###Datasets y metodos de embeddings:
 
-Este repositorio contiene 9 datasets (8 datasets de interacciones proteina-proteina de disferentes especies, y 2 datasets de miRNAs), en formato edgelist en la carpeta "data". Los datasets de interraccion de proteinas son: 
+Este repositorio contiene 9 datasets en formato edgelist en la carpeta "data": (7 datasets de interacciones proteina-proteina de diferentes especies, y 2 datasets de miRNAs), Los datasets de interaccion de proteinas son: 
 C.elegans, Acanthomoeba, E.coli, Oceanococcus, Oceanobacter, Jonesia denitrificans, Spirulina
 los datasets de miRNAs son: miRNA_gen (miRNAs y sus genes target) y miRNA_enf (miRNAs asociados a enfermedades)
 
@@ -32,7 +32,7 @@ los metodos de embeddings evaluados son:
 
 
 ### Procesamiento de los datasets:
-los datasets obtenidos en formato txt tabulados fueron formateados a formato edgelist y nodelist con el siguiente codigo de python, ejecutado en kaggle, como paso previo se creo un dataset de kaggle en la ruta /kaggle/input con los archivos a formatear.Luego, cada dataset se formateo por separado reemplazando "dataset_name" en el codgio por el nombre de archivo correspondiente:
+los datasets fueron formateados a formato edgelist y nodelist con el siguiente codigo de python, ejecutado en kaggle:
 
 ```
 
