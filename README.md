@@ -93,7 +93,7 @@ Luego, para ejecutar los métodos de embeddings y predicción de enlaces, se uti
 
 ```
 
-## 3.Referencias
+## 3. Please kindly cite the paper if you use the code, datasets or any results in this repo or in the paper:
 
 ```
 @article{yue2020graph,
