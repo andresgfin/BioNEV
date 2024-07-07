@@ -17,7 +17,7 @@
 ```
 
 ## 2. instrucciones de uso:
-###Datasets y metodos de embeddings:
+### Datasets y metodos de embeddings:
 
 Este repositorio contiene 9 datasets en formato edgelist en la carpeta "data": (7 datasets de interacciones proteina-proteina de diferentes especies, y 2 datasets de miRNAs), Los datasets de interaccion de proteinas son: 
 C.elegans, Acanthomoeba, E.coli, Oceanococcus, Oceanobacter, Jonesia denitrificans, Spirulina
