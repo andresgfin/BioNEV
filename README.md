@@ -3,7 +3,7 @@
 
 
 ## 1. instrucciones de uso:
-### Datasets y metodos de embeddings:
+### Datasets y métodos de embeddings:
 
 Este repositorio contiene: 9 datasets en formato edgelist en la carpeta "data": 7 datasets de interacciones proteina-proteina de diferentes especies (STRING_PPI), y 2 datasets de miRNAs (miRNA). Y el código de diferentes métodos de embeddings y evaluación de enlaces:
 
