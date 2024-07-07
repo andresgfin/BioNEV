@@ -9,7 +9,7 @@ Este repositorio contiene: 9 datasets en formato edgelist en la carpeta "data": 
 
 - matrix factorization-based: Laplacian Eigenmap, SVD, Graph Factorization, HOPE, GraRep
 - random walk-based: DeepWalk, node2vec, struc2vec
-- neural network-based: LINE, SDNE
+- neural network-based: LINE, SDNE, GAE (version tensorflow 1x)
 
 
 ### Procesamiento de los datasets:
