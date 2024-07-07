@@ -30,7 +30,7 @@ los metodos de embeddings evaluados son:
 
 
 ### Procesamiento de los datasets:
-los datasets fueron formateados a formato edgelist y nodelist con el siguiente codigo de python, ejecutado en kaggle, donde protein1 y protein2 son las columnas de los datasets de interaccion de proteinas. Para formatear otros datasets, deben reemplazarse por los nombres de columna correspondientes:
+los datasets fueron formateados a formato edgelist y nodelist con el siguiente codigo de python, ejecutado en kaggle, donde protein1 y protein2 son las columnas de los datasets de interaccion de proteinas, (para formatear otros datasets, debe reemplazarse por los nombres de columna)
 
 ```
 
