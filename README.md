@@ -5,7 +5,7 @@
 ## 1. instrucciones de uso:
 ### Datasets y metodos de embeddings:
 
-Este repositorio contiene: 9 datasets en formato edgelist en la carpeta "data": 7 datasets de interacciones proteina-proteina de diferentes especies (STRING_PPI), y 2 datasets de miRNAs (miRNA). Y el codigo de diferentes metodos de embeddings:
+Este repositorio contiene: 9 datasets en formato edgelist en la carpeta "data": 7 datasets de interacciones proteina-proteina de diferentes especies (STRING_PPI), y 2 datasets de miRNAs (miRNA). Y el codigo de diferentes metodos de embeddings y evaluacion de enlaces:
 
 - matrix factorization-based: Laplacian Eigenmap, SVD, Graph Factorization, HOPE, GraRep
 - random walk-based: DeepWalk, node2vec, struc2vec
@@ -14,7 +14,7 @@ Este repositorio contiene: 9 datasets en formato edgelist en la carpeta "data": 
 
 ### Procesamiento de los datasets:
 
-los datasets fueron formateados a formato edgelist y nodelist con el siguiente codigo de python, ejecutado en kaggle, donde protein1 y protein2 son las columnas de los datasets de interaccion de proteinas, (para formatear otros datasets, debe reemplazarse por los nombres de columna)
+Para formatear datasets a formato edgelist puede emplearse el siguiente codigo, donde protein1 y protein2 son las columnas de los datasets de interacción de proteinas, (para formatear otros datasets, debe reemplazarse por los nombres de columna correspondientes).
 
 ```
 
