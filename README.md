@@ -14,7 +14,7 @@ Este repositorio contiene: 9 datasets en formato edgelist en la carpeta "data": 
 
 ### Procesamiento de los datasets:
 
-Para formatear datasets a formato edgelist puede emplearse el siguiente codigo, donde protein1 y protein2 son las columnas de los datasets de interacción de proteinas, (para formatear otros datasets, debe reemplazarse por los nombres de columna correspondientes).
+Para formatear datasets a formato edgelist puede emplearse el siguiente código, donde protein1 y protein2 son las columnas de los datasets de interacción de proteinas, (para formatear otros datasets, debe reemplazarse por los nombres de columna correspondientes).
 
 ```
 
@@ -33,7 +33,7 @@ nodelist_file = os.path.join(output_dir, 'dataset_namenodelist.txt')
 
 # Leer el dataset completo
 df = pd.read_csv(input_file_path, sep=" ")
-#Nota:para datasets txt tabulados con espacios no tabulados (dataset de miRNAs), se utilizo: df = pd.read_csv(input_file_path, sep="\t")
+#Nota: para datasets txt tabulados con espacios no tabulados (dataset de miRNAs), se utiliza: df = pd.read_csv(input_file_path, sep="\t")
 
 # Obtener lista única de nodos (genes) y crear un DataFrame con índice
 nodes = pd.concat([df['protein1'], df['protein2']]).unique()
