@@ -64,7 +64,7 @@ print(f"Archivos '{edgelist_file}' y '{nodelist_file}' creados con éxito.")
 ```
 
 
-## 2. instrucciones de instalacion del codigo Bionev en kaggle y ejecucion de metodos de embeddings y Link prediction:
+## 2. instrucciones de instalacion del codigo Bionev en kaggle y ejecucion de métodos de embeddings y la tarea de predicción de nelaces:
 
 Instalacion del paquete BioNEV en kaggle junto con las librerias necesarias
 
@@ -74,7 +74,7 @@ Instalacion del paquete BioNEV en kaggle junto con las librerias necesarias
 !pip install -e /kaggle/working/BioNEV
 ```
 
-Luego, para ejecutar los metodos de embeddings y la tarea de link prediccion, se utiliza el siguiente comando en una celda de kaggle, al cual se debe especificar el dataset de partida, el metodo de embedding y la tarea (link prediction):
+Luego, para ejecutar los métodos de embeddings y predicción de enlaces, se utiliza el siguiente comando en una celda de kaggle, al cual se debe especificar el dataset de partida, el metodo de embedding y la tarea (link prediction):
 
 ```
 !python /kaggle/working/BioNEV/src/bionev/main.py --input /kaggle/working/BioNEV/data/folder_name/dataset_name.edgelist --method method_name --task link-prediction --output /kaggle/working/method_name_embeddings.txt
@@ -82,17 +82,16 @@ Luego, para ejecutar los metodos de embeddings y la tarea de link prediccion, se
 ```
 ### descripcion del comando: 
 --input:  ruta al dataset, solo acepta grafos en formato edgelist
---method: metodo de embedding. Opciones disponibles: node2vec, struc2vec, DeepWalk, LINE, SVD, GF, Laplacian, HOPE, GraRep, SDNE
+--method: método de embedding. Opciones disponibles: node2vec, struc2vec, DeepWalk, LINE, SVD, GF, Laplacian, HOPE, GraRep, SDNE
 --task: tarea de prediccion. Opciones disponibles: link-prediction  
 --output: ruta a kaggle working para guardar el archivo de embeddings. 
 
-### ejemplo de uso, en este caso para ejecutar un dataset de miRNA con el metodo node2vec y link prediction:
+### Ejemplo de uso, en este caso para ejecutar un dataset de miRNA con el método node2vec y predicción de enlaces:
 
 ```
 !python /kaggle/working/BioNEV/src/bionev/main.py --input /kaggle/working/BioNEV/data/miRNA/mirna_enf.edgelist --method node2vec --task link-prediction --output /kaggle/working/node2vec.txt
 
 ```
-Para cada dataset con cada método de embeddings con link prediction, reemplazando los nombres correspondientes en el comando anterior.
 
 ## 3.Referencias
 
