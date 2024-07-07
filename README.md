@@ -1,7 +1,7 @@
 
 # BioNEV (Biomedical Network Embedding Evaluation)
 
-## 1. Este repositorio contiene codigo python adaptado de:
+## 1. Este repositorio contiene código python adaptado de:
 
 ```
 @article{yue2020graph,
@@ -21,7 +21,7 @@
 
 Este repositorio contiene 9 datasets en formato edgelist en la carpeta "data": 7 datasets de interacciones proteina-proteina de diferentes especies (STRING_PPI), y 2 datasets de miRNAs (miRNA).
 
-Dichos datasets se utilizaron para evaluar 10 metodos de mebeddings representativos, con la tarea link prediction.
+Dichos datasets se utilizaron para evaluar 10 metodos de embeddings representativos, con la tarea link prediction.
 
 los metodos de embeddings evaluados son:
 - matrix factorization-based: Laplacian Eigenmap, SVD, Graph Factorization, HOPE, GraRep
