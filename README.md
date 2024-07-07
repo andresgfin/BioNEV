@@ -19,9 +19,7 @@
 ## 2. instrucciones de uso:
 ### Datasets y metodos de embeddings:
 
-Este repositorio contiene 9 datasets en formato edgelist en la carpeta "data": (7 datasets de interacciones proteina-proteina de diferentes especies, y 2 datasets de miRNAs), Los datasets de interaccion de proteinas son: 
-C.elegans, Acanthomoeba, E.coli, Oceanococcus, Oceanobacter, Jonesia denitrificans, Spirulina
-los datasets de miRNAs son: miRNA_gen (miRNAs y sus genes target) y miRNA_enf (miRNAs asociados a enfermedades)
+Este repositorio contiene 9 datasets en formato edgelist en la carpeta "data": 7 datasets de interacciones proteina-proteina de diferentes especies (STRING_PPI), y 2 datasets de miRNAs (miRNA).
 
 Dichos datasets se utilizaron para evaluar 10 metodos de mebeddings representativos, con la tarea link prediction.
 
