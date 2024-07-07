@@ -32,7 +32,7 @@ los metodos de embeddings evaluados son:
 
 
 ### Procesamiento de los datasets:
-los datasets fueron formateados a formato edgelist y nodelist con el siguiente codigo de python, ejecutado en kaggle:
+los datasets fueron formateados a formato edgelist y nodelist con el siguiente codigo de python, ejecutado en kaggle, donde protein1 y protein2 son las columnas de los datasets de interaccion de proteinas. Para formatear otros datasets, deben reemplazarse por los nombres de columna correspondientes:
 
 ```
 
@@ -78,10 +78,6 @@ df[['protein1', 'protein2']].to_csv(edgelist_file, sep=" ", index=False, header=
 print(f"Archivos '{edgelist_file}' y '{nodelist_file}' creados con éxito.")
 
 ```
-En el codigo anterior, protein1 y protein2 son las columnas del dataset a considerar, en este caso las columnas de los datasets de interaccion de proteinas. Para otros datasets, sereemplaza por el nombre correspondiente.
-
-luego, los archivos edgelist y nodelist obtenidos fueron incorporados a la carpeta de data del repositorio.
-
 
 
 ## 3. instrucciones de instalacion del codigo Bionev en kaggle y ejecucion de metodos de embeddings y Link prediction:
