@@ -80,9 +80,7 @@ print(f"Archivos '{edgelist_file}' y '{nodelist_file}' creados con éxito.")
 
 ## 3. instrucciones de instalacion del codigo Bionev en kaggle y ejecucion de metodos de embeddings y Link prediction:
 
-#### Installation
-
-Para instalar directamente desde github a kaggle:
+Instalacion del paquete BioNEV en kaggle junto con las librerias necesarias
 
 ```bash
 !git clone https://github.com/andresgfin/BioNEV.git
@@ -90,14 +88,13 @@ Para instalar directamente desde github a kaggle:
 !pip install -e /kaggle/working/BioNEV
 ```
 
-### Uso: para ejecutar los metodos de embeddings y tarea link prediccion se utilizo el siguiente comando, 
-ejecutandolo a continuacion de la instalacion previa, en una celda de kaggle:
+Luego, para ejecutar los metodos de embeddings y la tarea de link prediccion, se utiliza el siguiente comando en una celda de kaggle, al cual se debe especificar el dataset de partida, el metodo de embedding y la tarea (link prediction):
 
 ```
 !python /kaggle/working/BioNEV/src/bionev/main.py --input /kaggle/working/BioNEV/data/folder_name/dataset_name.edgelist --method method_name --task link-prediction --output /kaggle/working/method_name_embeddings.txt
 
 ```
-###descripcion del comando: 
+### descripcion del comando: 
 --input:  ruta al dataset, solo acepta grafos en formato edgelist
 --method: metodo de embedding. Opciones disponibles: node2vec, struc2vec, DeepWalk, LINE, SVD, GF, Laplacian, HOPE, GraRep, SDNE
 --task: tarea de prediccion. Opciones disponibles: link-prediction  
@@ -109,7 +106,7 @@ ejecutandolo a continuacion de la instalacion previa, en una celda de kaggle:
 !python /kaggle/working/BioNEV/src/bionev/main.py --input /kaggle/working/BioNEV/data/miRNA/mirna_enf.edgelist --method node2vec --task link-prediction --output /kaggle/working/node2vec.txt
 
 ```
-Luego se repitio ejecutando cada dataset con cada metodo de embeddings con link prediction, reemplazando los nombres correspondientes en el comando anterior.
+Para cada dataset con cada metodo de embeddings con link prediction, reemplazando los nombres correspondientes en el comando anterior.
 
 
 
