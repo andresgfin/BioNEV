@@ -92,7 +92,7 @@ Luego, para ejecutar los metodos de embeddings y la tarea de link prediccion, se
 !python /kaggle/working/BioNEV/src/bionev/main.py --input /kaggle/working/BioNEV/data/miRNA/mirna_enf.edgelist --method node2vec --task link-prediction --output /kaggle/working/node2vec.txt
 
 ```
-Para cada dataset con cada metodo de embeddings con link prediction, reemplazando los nombres correspondientes en el comando anterior.
+Para cada dataset con cada método de embeddings con link prediction, reemplazando los nombres correspondientes en el comando anterior.
 
 ## 3.Referencias
 
