@@ -62,9 +62,9 @@ print(f"Archivos '{edgelist_file}' y '{nodelist_file}' creados con éxito.")
 ```
 
 
-## 2. instrucciones de instalacion del codigo Bionev en kaggle y ejecucion de métodos de embeddings y la tarea de predicción de enlaces:
+## 2. Instrucciones de instalación del codigo Bionev en kaggle y ejecución de métodos de embeddings y la tarea de predicción de enlaces:
 
-Instalacion del paquete BioNEV en kaggle junto con las librerias necesarias
+Instalación del paquete BioNEV en kaggle junto con las librerías necesarias
 
 ```bash
 !git clone https://github.com/andresgfin/BioNEV.git
@@ -78,7 +78,7 @@ Comando para ejecutar métodos de embeddings y predicción de enlaces:
 !python /kaggle/working/BioNEV/src/bionev/main.py --input /kaggle/working/BioNEV/data/folder_name/dataset_name.edgelist --method method_name --task link-prediction --output /kaggle/working/method_name_embeddings.txt
 
 ```
-### descripcion del comando: 
+### Descripción del comando: 
 --input:  ruta al dataset, solo acepta grafos en formato edgelist
 --method: método de embedding. Opciones disponibles: node2vec, struc2vec, DeepWalk, LINE, SVD, GF, Laplacian, HOPE, GraRep, SDNE
 --task: tarea de prediccion. Opciones disponibles: link-prediction  
