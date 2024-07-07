@@ -1,22 +1,8 @@
 
 # BioNEV (Biomedical Network Embedding Evaluation)
 
-## 1. Este repositorio contiene código python adaptado de:
 
-```
-@article{yue2020graph,
-  title={Graph embedding on biomedical networks: methods, applications and evaluations},
-  author={Yue, Xiang and Wang, Zhen and Huang, Jingong and Parthasarathy, Srinivasan and Moosavinasab, Soheil and Huang, Yungui and Lin, Simon M and Zhang, Wen and Zhang, Ping and Sun, Huan},
-  journal={Bioinformatics},
-  volume={36},
-  number={4},
-  pages={1241--1251},
-  year={2020},
-  publisher={Oxford University Press}
-}
-```
-
-## 2. instrucciones de uso:
+## 1. instrucciones de uso:
 ### Datasets y metodos de embeddings:
 
 Este repositorio contiene 9 datasets en formato edgelist en la carpeta "data": 7 datasets de interacciones proteina-proteina de diferentes especies (STRING_PPI), y 2 datasets de miRNAs (miRNA).
@@ -78,7 +64,7 @@ print(f"Archivos '{edgelist_file}' y '{nodelist_file}' creados con éxito.")
 ```
 
 
-## 3. instrucciones de instalacion del codigo Bionev en kaggle y ejecucion de metodos de embeddings y Link prediction:
+## 2. instrucciones de instalacion del codigo Bionev en kaggle y ejecucion de metodos de embeddings y Link prediction:
 
 Instalacion del paquete BioNEV en kaggle junto con las librerias necesarias
 
@@ -108,6 +94,19 @@ Luego, para ejecutar los metodos de embeddings y la tarea de link prediccion, se
 ```
 Para cada dataset con cada metodo de embeddings con link prediction, reemplazando los nombres correspondientes en el comando anterior.
 
+## 3.Referencias
 
+```
+@article{yue2020graph,
+  title={Graph embedding on biomedical networks: methods, applications and evaluations},
+  author={Yue, Xiang and Wang, Zhen and Huang, Jingong and Parthasarathy, Srinivasan and Moosavinasab, Soheil and Huang, Yungui and Lin, Simon M and Zhang, Wen and Zhang, Ping and Sun, Huan},
+  journal={Bioinformatics},
+  volume={36},
+  number={4},
+  pages={1241--1251},
+  year={2020},
+  publisher={Oxford University Press}
+}
+```
 
 
